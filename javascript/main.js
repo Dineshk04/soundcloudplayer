@@ -9,6 +9,7 @@ ui.enterpress=function(){
 		var input=document.querySelector("input").value;
 
 		if(e.which===13){
+			cleanContainer();
 			SoundcloudApi.getTrack(input);
 		}
 	});
@@ -19,7 +20,9 @@ ui.enterpress();
 ui.searchclick=function(){
 	var key = document.querySelector(".search");
 	key.addEventListener('click',function(){
+		
 		var input=document.querySelector("input").value;
+		cleanContainer();
 		SoundcloudApi.getTrack(input);
 	});
 };
@@ -42,7 +45,7 @@ SoundcloudApi.init();
 
 SoundcloudApi.getTrack = function(inputvalue){ 
 // find all sounds of buskers licensed under 'creative commons share alike'
-	cleanContainer();
+	
 	SC.get('/tracks', {
 	  q: inputvalue
 	}).then(function(tracks) {
