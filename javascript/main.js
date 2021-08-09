@@ -42,6 +42,7 @@ SoundcloudApi.init();
 
 SoundcloudApi.getTrack = function(inputvalue){ 
 // find all sounds of buskers licensed under 'creative commons share alike'
+	cleanContainer();
 	SC.get('/tracks', {
 	  q: inputvalue
 	}).then(function(tracks) {
@@ -50,7 +51,13 @@ SoundcloudApi.getTrack = function(inputvalue){
 	});
 };
 
+function cleanContainer() {
 
+ var container = document.querySelector(".js-search-results");
+
+ container.innerHTML = "";
+
+}
 
 /* 3.display the card*/
 
